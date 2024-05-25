@@ -9,6 +9,8 @@ import { FlightsTableComponent } from './components/flights-table/flights-table.
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FlightContainerComponent } from './flight-container/flight-container.component';
+import { provideHttpClient, withFetch} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { FlightContainerComponent } from './flight-container/flight-container.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
