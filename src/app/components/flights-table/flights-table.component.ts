@@ -25,4 +25,6 @@ export class FlightsTableComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  
+
 }

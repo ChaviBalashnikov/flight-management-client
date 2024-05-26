@@ -9,8 +9,11 @@ import { FlightsTableComponent } from './components/flights-table/flights-table.
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FlightContainerComponent } from './flight-container/flight-container.component';
-import { provideHttpClient, withFetch} from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:4963', options: {} };
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config)
+
   ],
   providers: [
     provideAnimationsAsync(),
