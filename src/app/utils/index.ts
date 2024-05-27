@@ -1,8 +1,5 @@
 
-
 import dayjs from "dayjs";
-
-
 
 export const convertDateTime = (input: string): string => {
     const [datePart, timePart] = input.split(' - ');
@@ -11,7 +8,7 @@ export const convertDateTime = (input: string): string => {
     return formattedDateTime;
 }
 
-export const calculateDelay = (oldValue, newValue): number => {
+export const calculateFlightDelay = (oldValue, newValue): number => {
     const oldDate = dayjs(convertDateTime(oldValue));
     const currentDate = dayjs(convertDateTime(newValue));
     const delay = currentDate.diff(oldDate, 'minute');
