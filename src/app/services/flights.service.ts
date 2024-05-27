@@ -12,7 +12,8 @@ const url = "http://localhost:4963"
 export class FlightsService {
 
 
-  constructor(private http: HttpClient, private socket: Socket) { }
+  constructor(private http: HttpClient, private socket: Socket) {
+  }
 
 
   public getFlights(): Observable<Flight[]> {
@@ -20,7 +21,14 @@ export class FlightsService {
   }
 
   getFlightUpdates() {
-    return this.socket.fromEvent<Flight>('flight-update');
+    return this.socket.fromEvent<Flight>('flight-update')
   }
+
+
+
+
+
+
+
 }
 
