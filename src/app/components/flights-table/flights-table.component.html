@@ -17,7 +17,10 @@
 
   <ng-container matColumnDef="takeoffTime">
     <th mat-header-cell *matHeaderCellDef> Takeoff time </th>
-    <td mat-cell *matCellDef="let flight"> {{flight.takeoffTime}} </td>
+    <td mat-cell *matCellDef="let flight"> {{flight.takeoffTime}}
+      <mat-chip class="delay-chip" *ngIf="flight.takeoffTimeDelay > 0">{{flight.takeoffTimeDelay}}mins delay</mat-chip>
+
+    </td>
   </ng-container>
   <ng-container matColumnDef="landingAirport">
     <th mat-header-cell *matHeaderCellDef> Landing airport </th>
@@ -26,7 +29,9 @@
 
   <ng-container matColumnDef="landingTime">
     <th mat-header-cell *matHeaderCellDef> Landing time </th>
-    <td mat-cell *matCellDef="let flight"> {{flight.landingTime}} </td>
+    <td mat-cell *matCellDef="let flight"> {{flight.landingTime}} <mat-chip class="delay-chip"
+        *ngIf="flight.landingTimeDelay > 0">{{flight.landingTimeDelay}}mins delay</mat-chip>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="status">

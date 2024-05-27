@@ -3,6 +3,9 @@ import { FlightsService } from '../services/flights.service';
 import { Subscription } from 'rxjs';
 import { Flight } from '../models/flight.interface';
 import { FlightsTableComponent } from '../components/flights-table/flights-table.component';
+import { calculateDelay } from '../utils';
+import cloneDeep from 'lodash.clonedeep';
+
 @Component({
   selector: 'app-flight-container',
   templateUrl: './flight-container.component.html',
@@ -22,11 +25,16 @@ export class FlightContainerComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.flightService.getFlights().subscribe(data => {
         this.flights = data
+
       }));
+    this.flightService.getFlightUpdates()
     this.subscription.add(
       this.flightService.getFlightUpdates().subscribe(updatedFlight => {
         const index = this.flights.findIndex(flight => flight.flightNumber === updatedFlight.flightNumber);
         if (index !== -1) {
+          const oldValue = cloneDeep(this.flights[index]);
+          updatedFlight.takeoffTimeDelay = calculateDelay(oldValue.takeoffTime, updatedFlight.takeoffTime);
+          updatedFlight.landingTimeDelay = calculateDelay(oldValue.landingTime, updatedFlight.landingTime);
           this.flights[index] = updatedFlight;
         } else {
           this.flights.push(updatedFlight);
@@ -39,8 +47,11 @@ export class FlightContainerComponent implements OnInit, OnDestroy {
     )
   }
 
+
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+
   }
 
 

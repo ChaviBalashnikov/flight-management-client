@@ -13,7 +13,9 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:4963', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:4963',options: {
+  
+} };
 
 @NgModule({
   declarations: [

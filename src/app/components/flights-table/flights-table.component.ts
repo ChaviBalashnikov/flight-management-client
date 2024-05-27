@@ -3,10 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Flight } from '../../models/flight.interface';
 
 
-
-
-
-
 @Component({
   selector: 'app-flights-table',
   templateUrl: './flights-table.component.html',
@@ -16,8 +12,9 @@ export class FlightsTableComponent {
   @Input() set flights(value: Flight[]) {
     this.dataSource.data = value;
   }
+
   dataSource: MatTableDataSource<Flight> = new MatTableDataSource();
-  displayedColumns: string[] = ['flightNumber', 'landingAirport', 'landingTime', 'takeoffAirport', 'takeoffTime', 'status',];
+  displayedColumns: string[] = ['flightNumber', 'takeoffAirport', 'takeoffTime', 'landingAirport', 'landingTime', 'status'];
 
 
   applyFilter(event: Event): void {
@@ -25,6 +22,6 @@ export class FlightsTableComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  
+
 
 }
