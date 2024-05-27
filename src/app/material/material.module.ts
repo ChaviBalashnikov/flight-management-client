@@ -4,10 +4,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import {  MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const modules = [
   MatToolbarModule,
@@ -17,7 +18,8 @@ const modules = [
   MatTableModule,
   MatInputModule,
   MatFormFieldModule,
-  MatChipsModule
+  MatChipsModule,
+  MatTabsModule
 
 ]
 

@@ -1,9 +1,14 @@
 
+
+
 table {
     width: 100%;
     .malfunction {
-      background-color: #ffcccc; 
       color: #b20000; 
+      font-weight: bold;
+    }
+    th{
+      background-color: #daf2f3;
       font-weight: bold;
     }
 
@@ -16,19 +21,36 @@ table {
     }
     .mat-column-takeoffTime , .mat-column-landingTime  {
       width: 200px;
-     
-        .delay-chip {
-         background-color: rgba(252, 248, 2, 0.521);
+    
+        .delay {
+         font-weight: bolder;
+         margin-left: 20px;
         }
      
     }
     .mat-column-status{
       width: 100px;
+      .mat-mdc-standard-chip {
+        --mdc-chip-elevated-container-color:  #ffcccc;
+        --mdc-chip-label-text-color: #b20000;
+        font-size: bold;
+      }
     }
+  tr {
+      height: 80px; 
+      font-size: 1rem;
+      color: #152d66;
+    }
+    tr:nth-child(odd){
+      background-color: #f0f6f9;
+  }
+    
   }
   .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
   }
+
+
 
   
