@@ -1,0 +1,50 @@
+<mat-form-field>
+  <mat-label>Search for a flight</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="flightNumber">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let flight"> {{flight.flightNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="takeoffAirport">
+    <th mat-header-cell *matHeaderCellDef> Takeoff airport </th>
+    <td mat-cell *matCellDef="let flight"> {{flight.takeoffAirport}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="takeoffTime">
+    <th mat-header-cell *matHeaderCellDef> Takeoff time </th>
+    <td mat-cell *matCellDef="let flight"> {{flight.takeoffTime}}
+      <p class="delay" *ngIf="flight.takeoffTimeDelay > 0">{{flight.takeoffTimeDelay}}mins delay</p>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="landingAirport">
+    <th mat-header-cell *matHeaderCellDef> Landing airport </th>
+    <td mat-cell *matCellDef="let flight"> {{flight.landingAirport}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="landingTime">
+    <th mat-header-cell *matHeaderCellDef> Landing time </th>
+    <td mat-cell *matCellDef="let flight"> {{flight.landingTime}} <p class="delay" *ngIf="flight.landingTimeDelay > 0">
+        {{flight.landingTimeDelay}}mins delay</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let flight">
+      <mat-chip class="status-chip" *ngIf="flight.status === 'malfunction'; else other_status">{{flight.status}}
+      </mat-chip>
+      <ng-template #other_status>{{flight.status}}</ng-template>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+  </tr>
+</table>
